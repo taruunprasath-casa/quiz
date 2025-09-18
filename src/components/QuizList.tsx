@@ -11,7 +11,7 @@ const QuizList = () => {
     ];
 
     return (
-        <Box id="myquiz" sx={{ padding: 4, border: '1px solid #0e0e0eff', borderRadius: '10px', marginTop: "40px" }}>
+        <Box id="myquiz" sx={{ padding: 4, border: '1px solid #0e0e0eff', borderRadius: '10px', marginTop: "10px" }}>
             <Typography sx={{ textAlign: "center", color: "black" }} variant="h3" gutterBottom>
                 Available Quizzes
             </Typography>
