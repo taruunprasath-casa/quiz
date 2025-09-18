@@ -1,58 +1,109 @@
 import { useState } from "react";
-import "../styles/LoginPage.css";
- import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {
+  Box,
+  Button,
+  Checkbox,
+  Container,
+  FormControlLabel,
+  Paper,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export default function LoginPage() {
-const navigate = useNavigate();
- const [email,setEmail] = useState('');
- const [password,setPassword] =useState('');
- const handleEmailChange = (e : any) =>{
-    setEmail(e.target.value);
-}
-const handlePasswordChange =(e:any) =>{
-   setPassword(e.target.value);
-}
-const handleSignIn =()=>{
-    if(email == 'teacher@gmail.com' && password == '1234'){
-       navigate('/TeacherDash');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isTeacher, setIsTeacher] = useState(false);
+
+  const handleLogin = () => {
+    localStorage.setItem("email", email);
+    localStorage.setItem("password", password);
+    localStorage.setItem("isTeacher", isTeacher.toString());
+
+    const mockUser = {
+      email: "taruunprasath@gmail.com",
+      password: "123456",
+      isTeacher: true,
     }
-    if(email == 'student@gmail.com' && password == '12345'){
-      navigate('/StudentDash');
+
+    if (email === mockUser.email && password === mockUser.password) {
+      navigate("/dashboard");
     }
-}
+  };
+
   return (
-    <>
-      <div className="main-container" id="glass-card">
-        <div className="login-container">
-          <div id="header">
-            <h2>Sign in to Quizz App</h2>
-            <p>Welcome User, Please Sign in to continue</p>
-          </div>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            placeholder="Enter Email"
-            required
+    <Container
+      maxWidth="sm"
+      sx={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Paper
+        elevation={6}
+        sx={{
+          padding: 4,
+          width: "100%",
+          borderRadius: 3,
+          background: "linear-gradient(to bottom right, #a18f8f80, #1a1a1a46)",
+        }}
+      >
+        <Box mb={3} textAlign="center">
+          <Typography variant="h4" fontWeight="bold" gutterBottom color="black">
+            Sign in to Quiz App
+          </Typography>
+          <Typography variant="body1" color="black">
+            Welcome! Please enter your credentials.
+          </Typography>
+        </Box>
+
+        <Box display="flex" flexDirection="column" gap={2}>
+          <TextField
+            label="Email"
+            type="email"
+            variant="outlined"
+            fullWidth
             value={email}
-            onChange={handleEmailChange}
-          />
-
-          <input
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={handlePasswordChange}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
 
-          <div>
-            <button className="button" onClick={handleSignIn}>Sign In</button>
-          </div>
-        </div>
-      </div>
-    </>
+          <TextField
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={isTeacher}
+                onChange={(e) => setIsTeacher(e.target.checked)}
+              />
+            }
+            label="Are you a Teacher?"
+            sx={{ color: "black" }}
+          />
+
+          <Button
+            variant="contained"
+            color="primary"
+            size="large"
+            sx={{ fontWeight: "bold", mt: 2 }}
+            onClick={handleLogin}
+          >
+            Sign In
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
   );
 }
