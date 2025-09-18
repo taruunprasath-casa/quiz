@@ -1,6 +1,7 @@
 import { Box, Button, Container, Typography } from '@mui/material';
 
 const Hero = () => {
+    const isTeacher = localStorage.getItem("isTeacher")==="true";
     return (
         <Box
             id="home"
@@ -47,7 +48,7 @@ const Hero = () => {
                     },
                 }}
             >
-                Create Quiz
+                {isTeacher? "Create Quiz": "Browse Quiz"}
             </Button>
         </Box>
     );

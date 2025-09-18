@@ -1,12 +1,13 @@
-import { AppBar, Container, Link, Stack, Typography, Box } from '@mui/material';
+import { AppBar, Container, Link, Stack, Typography, Box, Button, Avatar } from '@mui/material';
+import { deepOrange } from '@mui/material/colors';
 
 const Navbar = () => {
     const navItems = [
-        { name: "Home", id: "home" },
+        { name: "Home", id: "dashboard" },
         { name: "MyQuiz", id: "myquiz" },
-        { name: "Contact", id: "contact" },
         { name: "Create Quiz", id: "createquiz" },
     ];
+    const isTeacher = localStorage.getItem("isTeacher")==="true";
 
     return (
         <>
@@ -41,12 +42,14 @@ const Navbar = () => {
                                 <Link
                                     key={navItem.id}
                                     sx={{ color: "white", textDecoration: "none", fontSize: "20px", cursor: "pointer" }}
-                                    href={`#${navItem.id}`}
+                                    href={`/${navItem.id}`}
                                 >
                                     {navItem.name}
                                 </Link>
                             ))}
                         </Stack>
+                        <Button variant='contained' href='/'>Logout</Button>
+                        <Avatar sx={{ bgcolor: deepOrange[500] }}>{isTeacher ? "T" : "S"}</Avatar>
                     </Stack>
                 </Container>
             </AppBar>
