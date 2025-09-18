@@ -1,9 +1,9 @@
-import Dashboard from './pages/Dashboard'
+import QuestionCard from "./components/QuestionCard"
 
 const App = () => {
   return (
     <>
-      <Dashboard />
+      <QuestionCard/>
     </>
   )
 }
