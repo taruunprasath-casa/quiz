@@ -16,9 +16,11 @@ const Navbar = () => {
 
     const navItems = [
         { name: "Home", id: "dashboard" },
+        { name: "Home", id: "dashboard" },
         { name: "MyQuiz", id: "myquiz" },
         { name: "Create Quiz", id: "createquiz" },
     ];
+    const isTeacher = localStorage.getItem("isTeacher")==="true";
 
     return (
         <AppBar
