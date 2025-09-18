@@ -20,7 +20,7 @@ const Hero = () => {
             }}
         >
             <Typography variant="h2" sx={{ fontWeight: 'bold' }}>
-                Welcome to the Quiz App
+                Welcome to the Quizz App
             </Typography>
 
             <Container sx={{ marginTop: '20px' }}>
