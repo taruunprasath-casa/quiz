@@ -20,7 +20,6 @@ const Navbar = () => {
         { name: "MyQuiz", id: "myquiz" },
         { name: "Create Quiz", id: "createquiz" },
     ];
-    const isTeacher = localStorage.getItem("isTeacher")==="true";
 
     return (
         <AppBar
