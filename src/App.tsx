@@ -1,9 +1,9 @@
-import QuestionCard from "./components/QuestionCard"
-
+import { RouterProvider } from 'react-router-dom'
+import routes from './router'
 const App = () => {
   return (
     <>
-      <QuestionCard/>
+      <RouterProvider router={routes} />
     </>
   )
 }

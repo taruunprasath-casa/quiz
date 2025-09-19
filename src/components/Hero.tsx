@@ -1,6 +1,9 @@
 import { Box, Button, Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
+    const isTeacher = localStorage.getItem("isTeacher") === "true";
+
     return (
         <Box
             id="home"
@@ -32,23 +35,25 @@ const Hero = () => {
                 </Typography>
             </Container>
 
-            <Button
-                variant="contained"
-                color="secondary"
-                size="large"
-                sx={{
-                    marginTop: '20px',
-                    backgroundColor: 'white',
-                    color: '#000',
-                    fontWeight: 'bold',
-                    '&:hover': {
-                        backgroundColor: '#000',
-                        color: '#fff',
-                    },
-                }}
-            >
-                Create Quiz
-            </Button>
+            <Link to="/createquiz">
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    size="large"
+                    sx={{
+                        marginTop: '20px',
+                        backgroundColor: 'white',
+                        color: '#000',
+                        fontWeight: 'bold',
+                        '&:hover': {
+                            backgroundColor: '#000',
+                            color: '#fff',
+                        },
+                    }}
+                >
+                    {isTeacher ? "Create Quiz" : "Browse Quiz"}
+                </Button>
+            </Link>
         </Box>
     );
 };
