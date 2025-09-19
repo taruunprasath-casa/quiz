@@ -1,7 +1,13 @@
 import { Box, Button, Container, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-    const isTeacher = localStorage.getItem("isTeacher")==="true";
+    const isTeacher = localStorage.getItem("isTeacher") === "true";
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/createquiz");
+    }
     return (
         <Box
             id="home"
@@ -36,6 +42,7 @@ const Hero = () => {
             <Button
                 variant="contained"
                 color="secondary"
+                onClick={handleClick}
                 size="large"
                 sx={{
                     marginTop: '20px',
@@ -48,7 +55,7 @@ const Hero = () => {
                     },
                 }}
             >
-                {isTeacher? "Create Quiz": "Browse Quiz"}
+                {isTeacher ? "Create Quiz" : "Browse Quiz"}
             </Button>
         </Box>
     );
