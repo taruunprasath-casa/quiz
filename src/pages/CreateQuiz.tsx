@@ -6,7 +6,7 @@ const CreateQuiz = () => {
     const navigate = useNavigate();
 
     const handleQuizTypeSelect = (type: string) => {
-        navigate(`/createquiz/${type}`);
+        navigate(`/${type}`);
     };
 
     return (
